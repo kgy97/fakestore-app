@@ -1,1 +1,2 @@
-export { default as Layout } from './layout';
+export * from './layout';
+export * from './products';

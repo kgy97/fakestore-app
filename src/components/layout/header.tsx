@@ -32,7 +32,7 @@ const Header: React.FC<Props> = ({ categories }) => {
                     </div>
                     <div className={`flex flex-col lg:flex-row justify-start text-right lg:text-left ${mobileNavOpen ? '' : 'hidden lg:block'}`}>
                         {navigationLinks.map(navItem => {
-                            return <NavigationItem key={navItem.title} Title={navItem.title} Target={navItem.link} />;
+                            return <NavigationItem key={navItem.title} title={navItem.title} target={navItem.link} />;
                         })}
                     </div>
                 </div>
