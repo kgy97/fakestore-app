@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Product } from '@/interfaces';
 import { getCategories, getProducts } from '@/helpers';
 import Link from 'next/link';
+import { Layout } from '@/components';
 
 interface Props {
     products: Product[];
@@ -17,14 +18,16 @@ const Home: React.FC<Props> = ({ products, categories }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main>
-                {products?.map(prod => {
-                    return <div key={prod.id}>{prod.title}</div>;
-                })}
-                {categories.map(cat => {
-                    return <Link key={cat} href={`/${encodeURIComponent(cat)}`} legacyBehavior about={cat}>{cat.toUpperCase()}</Link>;
-                })}
-            </main>
+            <Layout categories={categories} >
+                <main>
+                    <h1 className="text-3xl font-bold underline">
+                        Hello world!
+                    </h1>
+                    {products?.map(prod => {
+                        return <Link key={prod.id} href={`/product/${encodeURIComponent(`${prod.title}-${prod.id}`)}`} legacyBehavior about={prod.title}>{prod.title}</Link>;
+                    })}
+                </main>
+            </Layout>
         </>
     );
 };

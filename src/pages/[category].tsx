@@ -2,14 +2,18 @@ import Head from 'next/head';
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import { Product } from '@/interfaces';
-import { getProductsInCategory } from '@/helpers';
+import { getCategories, getProductsInCategory } from '@/helpers';
+import Link from 'next/link';
+import { Layout } from '@/components';
 
 interface Props {
     products: Product[];
+    categories: string[];
 };
 
-const ProductsInCategory: React.FC<Props> = ({ products }) => {
+const ProductsInCategory: React.FC<Props> = ({ products, categories }) => {
     const { pathname } = useRouter();
+
     return (
         <>
             <Head>
@@ -18,12 +22,14 @@ const ProductsInCategory: React.FC<Props> = ({ products }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main>
-                {products?.map(prod => {
-                    return <div key={prod.id}>{prod.title}</div>;
-                })}
-                <br />
-            </main>
+            <Layout categories={categories} >
+                <main>
+                    {products?.map(prod => {
+                        return <Link key={prod.id} href={`/product/${encodeURIComponent(`${prod.title}-${prod.id}`)}`} legacyBehavior about={prod.title}>{prod.title}</Link>;
+                    })}
+                    <br />
+                </main>
+            </Layout>
         </>
     );
 };
@@ -31,9 +37,10 @@ const ProductsInCategory: React.FC<Props> = ({ products }) => {
 export default ProductsInCategory;
 
 export async function getServerSideProps(context) {
+    const categories = await getCategories();
     const products = await getProductsInCategory(context.params.category);
 
     if (!products?.length) return { redirect: { destination: '/', permanent: false, } };
 
-    return { props: { products } };
+    return { props: { products, categories } };
 }

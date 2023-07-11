@@ -2,13 +2,15 @@ import Head from 'next/head';
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import { Product } from '@/interfaces';
-import { getProduct } from '@/helpers';
+import { getCategories, getProduct } from '@/helpers';
+import { Layout } from '@/components';
 
 interface Props {
     product: Product;
+    categories: string[];
 };
 
-const Product: React.FC<Props> = ({ product }) => {
+const Product: React.FC<Props> = ({ product, categories }) => {
     const { pathname } = useRouter();
     return (
         <>
@@ -18,9 +20,11 @@ const Product: React.FC<Props> = ({ product }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main>
-                <div>{product.title}</div>
-            </main>
+            <Layout categories={categories} >
+                <main>
+                    <div>{product.title}</div>
+                </main>
+            </Layout>
         </>
     );
 };
@@ -28,6 +32,7 @@ const Product: React.FC<Props> = ({ product }) => {
 export default Product;
 
 export async function getServerSideProps(context) {
+    const categories = await getCategories();
     const productNameWithId: string = context.params['product-name-with-id'];
 
     if (!productNameWithId?.length) return { redirect: { destination: '/', permanent: true, } };
@@ -41,5 +46,5 @@ export async function getServerSideProps(context) {
 
     if (!product) return { redirect: { destination: '/', permanent: false, } };
 
-    return { props: { product } };
+    return { props: { product, categories } };
 }
