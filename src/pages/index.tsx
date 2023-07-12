@@ -20,8 +20,8 @@ const Home: React.FC<Props> = ({ products, categories }) => {
             </Head>
             <Layout categories={categories} >
                 <main>
-                    <h1 className="text-3xl font-bold underline">
-                        All products
+                    <h1 className="text-3xl font-bold text-center md:px-12 py-6">
+                        ALL PRODUCTS
                     </h1>
                     <Products products={products} />
                 </main>

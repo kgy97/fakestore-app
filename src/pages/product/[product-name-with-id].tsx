@@ -3,7 +3,8 @@ import * as React from 'react';
 import { useRouter } from 'next/router';
 import { Product } from '@/interfaces';
 import { getCategories, getProduct } from '@/helpers';
-import { Layout } from '@/components';
+import { Layout, ProductForm } from '@/components';
+import Link from 'next/link';
 
 interface Props {
     product: Product;
@@ -11,18 +12,20 @@ interface Props {
 };
 
 const Product: React.FC<Props> = ({ product, categories }) => {
-    const { pathname } = useRouter();
+    const router = useRouter();
+
     return (
         <>
             <Head>
-                <title>{pathname}</title>
+                <title>{product.title}</title>
                 <meta name="description" content="Shop electronics, jewelery, women's or men's clothing" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout categories={categories} >
-                <main>
-                    <div>{product.title}</div>
+                <button onClick={router.back}>Back to the category</button>
+                <main className='h-full'>
+                    <ProductForm product={product} />
                 </main>
             </Layout>
         </>

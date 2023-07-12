@@ -7,7 +7,13 @@ module.exports = {
         fontFamily: {
             'sans': ['Open sans'],
         },
-        extend: {},
+        extend: {
+            width: {
+                '90%': '90%',
+                '30%': '30%',
+                '70%': '70%',
+            }
+        }
     },
     plugins: [],
 }

@@ -12,8 +12,8 @@ const NavigationItem: React.FC<Props> = ({ title, target }) => {
     const { asPath } = useRouter();
 
     const isItemCurrentCategory = React.useMemo(() => {
-        return title == getCategoryNameFromURL(asPath);
-    }, [asPath, title]);
+        return title == getCategoryNameFromURL(asPath) || asPath === target;
+    }, [asPath, title, target]);
 
     return (
         <Link key={title} href={target} legacyBehavior about={title}>

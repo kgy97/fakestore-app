@@ -9,9 +9,11 @@ type Props = {
 const Layout: React.FC<Props> = ({ categories, children }) => {
 
     return (
-        <div>
+        <div className='min-h-full flex flex-col'>
             <Header categories={categories} />
-            {children}
+            <div className='bg-violet-100 grow'>
+                {children}
+            </div>
         </div>
     );
 };

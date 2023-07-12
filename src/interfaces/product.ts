@@ -5,6 +5,7 @@ interface Product {
     category: string,
     image: string,
     rating: Rating;
+    price: number;
 }
 
 export default Product;
