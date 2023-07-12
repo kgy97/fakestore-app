@@ -1,12 +1,28 @@
 import { Product } from '@/interfaces';
 import Image from 'next/image';
 import * as React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart, selectCartState, removeFromCart } from '@/redux/cart-slice';
 
 type Props = {
     product: Product;
 };
 
 const ProductForm: React.FC<Props> = ({ product }) => {
+    const cartState = useSelector(selectCartState);
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        console.log(cartState);
+    }, [cartState]);
+
+    const addItemToCart = React.useCallback(() => {
+        dispatch(addToCart(product));
+    }, [product, dispatch]);
+
+    const removeItemFromCart = React.useCallback(() => {
+        dispatch(removeFromCart(product));
+    }, [product, dispatch]);
 
     return (
         <div className='h-min'>
@@ -20,7 +36,8 @@ const ProductForm: React.FC<Props> = ({ product }) => {
                     <p className='text-md my-4'>Rating: {product.rating.rate}/5 (out of {product.rating.count})</p>
                     <div className='flex flex-row justify-end items-center'>
                         <span className='font-semibold text-2xl'>{product.price} $</span>
-                        <button className='m-2 ml-4 bg-violet-200 rounded-md px-4 py-2 hover:bg-violet-300 active:bg-violet-400'>Add to cart</button>
+                        <button onClick={addItemToCart} className='m-2 ml-4 bg-violet-200 rounded-md px-4 py-2 hover:bg-violet-300 active:bg-violet-400'>Add to cart</button>
+                        <button onClick={removeItemFromCart} className='m-2 ml-4 bg-violet-200 rounded-md px-4 py-2 hover:bg-violet-300 active:bg-violet-400'>Remove from cart</button>
                     </div>
                 </div>
             </div>
