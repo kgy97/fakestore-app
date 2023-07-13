@@ -1,6 +1,6 @@
-import { Product } from '@/interfaces';
 import Image from 'next/image';
 import * as React from 'react';
+import { Product } from '@/interfaces';
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '@/redux/cart-slice';
 
@@ -10,10 +10,11 @@ type Props = {
 
 const ProductForm: React.FC<Props> = ({ product }) => {
     const dispatch = useDispatch();
+    const [quantity, setQuantity] = React.useState<number>(1);
 
     const addItemToCart = React.useCallback(() => {
-        dispatch(addToCart(product));
-    }, [product, dispatch]);
+        dispatch(addToCart({ product, quantity }));
+    }, [product, dispatch, quantity]);
 
     const removeItemFromCart = React.useCallback(() => {
         dispatch(removeFromCart(product));
@@ -30,10 +31,13 @@ const ProductForm: React.FC<Props> = ({ product }) => {
                     <p className='text-md text-justify my-4'>{product.description}</p>
                     <p className='text-md my-4'>Rating: {product.rating.rate}/5 (out of {product.rating.count})</p>
                     <div className='flex flex-col md:flex-row md:justify-end md:items-center items-end'>
-                        <span className='font-semibold text-2xl pb-3 md:pb-0'>{product.price} $</span>
-                        <div className='flex flex-row'>
+                        <div className='flex flex-row items-center align-center pb-3 md:pb-0'>
+                            <span className='font-semibold text-2xl  pr-5'>{product.price} $</span>
+                            <input type='number' className='h-10 text-lg w-16 border-2 rounded-lg px-2' value={quantity} onChange={(e) => setQuantity(+e?.target?.value ?? 1)} />
+                        </div>
+                        <div className='flex flex-row items-center md:pl-5'>
                             <button onClick={addItemToCart} className='m-2 ml-4 bg-cyan-200 rounded-md px-4 py-2 hover:bg-cyan-300 active:bg-cyan-400'>Add to cart</button>
-                            <button onClick={removeItemFromCart} className='m-2 ml-4 bg-cyan-200 rounded-md px-4 py-2 hover:bg-cyan-300 active:bg-cyan-400'>Remove from cart</button>
+                            <button onClick={removeItemFromCart} className='m-2 ml-4 bg-cyan-200 rounded-md px-4 py-2 hover:bg-cyan-300 active:bg-cyan-400 -order-1 md:order-1'>Remove all</button>
                         </div>
                     </div>
                 </div>
