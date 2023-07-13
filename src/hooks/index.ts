@@ -1,0 +1,1 @@
+export { default as useInitialCartData } from './use-initial-cart-data';

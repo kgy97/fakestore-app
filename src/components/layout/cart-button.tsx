@@ -2,6 +2,7 @@ import Image from 'next/image';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartState } from '@/redux/cart-slice';
+import { useInitialCartData } from '@/hooks';
 
 type Props = {};
 

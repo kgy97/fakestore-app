@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { Product } from '@/interfaces';
-import { useDispatch } from 'react-redux';
-import { addToCart, removeFromCart } from '@/redux/cart-slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartState, setCartState } from '@/redux/cart-slice';
 
 type Props = {
     product: Product;
@@ -10,15 +10,28 @@ type Props = {
 
 const ProductForm: React.FC<Props> = ({ product }) => {
     const dispatch = useDispatch();
+    const cartState = useSelector(selectCartState);
     const [quantity, setQuantity] = React.useState<number>(1);
 
     const addItemToCart = React.useCallback(() => {
-        dispatch(addToCart({ product, quantity }));
-    }, [product, dispatch, quantity]);
+        let newCartState = structuredClone(cartState);
+
+        const itemAlreadyInCartIndex = newCartState.findIndex(prod => prod.id === product.id);
+        if (itemAlreadyInCartIndex == -1) {
+            newCartState.push({ ...product, quantity: quantity ?? 0 });
+        }
+        else {
+            console.log(newCartState[itemAlreadyInCartIndex].quantity);
+            newCartState[itemAlreadyInCartIndex].quantity += quantity ?? 0;
+        }
+        dispatch(setCartState(newCartState));
+    }, [product, dispatch, quantity, cartState]);
 
     const removeItemFromCart = React.useCallback(() => {
-        dispatch(removeFromCart(product));
-    }, [product, dispatch]);
+        const newCartState = cartState.filter(prod => prod.id !== product.id);
+
+        dispatch(setCartState(newCartState));
+    }, [product, dispatch, cartState]);
 
     return (
         <div className='h-min md:mt-16'>
