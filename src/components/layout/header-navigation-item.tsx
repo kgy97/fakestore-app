@@ -18,7 +18,7 @@ const HeaderNavigationItem: React.FC<Props> = ({ title, target }) => {
 
     return (
         <Link key={title} href={target} legacyBehavior about={title}>
-            <a className={`lg:mr-6 xl:mr-14 lg:ml-6 hover:text-gray-600 duration-100 mr-2 py-2 whitespace-nowrap`}
+            <a className={`lg:mr-6 xl:mr-14 lg:ml-6 text-gray-800 hover:text-gray-950 duration-100 mr-2 py-2 whitespace-nowrap`}
                 style={{ textShadow: `${isItemCurrentCategory ? '0px 0px 1px black' : 'none'}` }}>
                 {title.toUpperCase()}
             </a>
