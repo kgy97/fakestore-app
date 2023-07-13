@@ -1,7 +1,7 @@
-import { Product } from '@/interfaces';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import * as React from 'react';
+import { Product } from '@/interfaces';
 
 type Props = {
     product: Product;

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Product } from '@/interfaces';
 import { getCategories, getProduct } from '@/helpers';
 import { Layout, ProductForm } from '@/components';
-import Link from 'next/link';
+import Image from 'next/image';
 
 interface Props {
     product: Product;
@@ -23,7 +23,12 @@ const Product: React.FC<Props> = ({ product, categories }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout categories={categories} >
-                <button onClick={() => router.back()} className='text-xl m-5 ml-8 hover:underline font-semibold'>&lt;- Back to the category</button>
+                <button onClick={() => router.back()} className='text-xl m-5 ml-8 hover:underline font-semibold flex flex-row items-center'>
+                    <div className='relative h-6 w-6 mr-2'>
+                        <Image src={'/left.png'} fill objectFit='contain' alt='cart' />
+                    </div>
+                    Back to the category
+                </button>
                 <main className='h-full'>
                     <ProductForm product={product} />
                 </main>
