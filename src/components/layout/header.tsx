@@ -17,12 +17,12 @@ const Header: React.FC<Props> = ({ categories }) => {
     }, [categories]);
 
     return (
-        <header className='bg-sky-100 lg:h-20 lg:flex lg:items-center'>
-            <nav className='bg-sky-200 px-4 lg:px-6 py-2.5 flex flex-row justify-between items-start md:items-center lg:text-md xl:text-lg text-lg w-full relative'>
-                <div className='mt-1 lg:mt-0 w-2/5 lg:w-1/6 md:pl-4 text-center md:text-left flex-1'>
+        <header className='bg-cyan-100 lg:h-20 lg:flex lg:items-center'>
+            <nav className='px-4 lg:px-12 py-2 flex flex-row justify-between items-start md:items-center lg:text-md xl:text-lg text-lg w-full relative font-semibold'>
+                <div className='mt-1 lg:mt-0 w-2/5 lg:w-1/6 md:pl-4 text-center md:text-left flex-1 md:flex-none'>
                     MY SHOP
                 </div>
-                <div className='flex flex-col md:justify-center items-end md:w-3/5 lg:w-5/6 flex-1 w-1/5'>
+                <div className='flex flex-col md:justify-center items-end md:w-3/5 lg:w-5/6 flex-1 md:flex-none w-1/5'>
                     <div className='lg:hidden space-y-2 m-2 mb-3' onClick={() => setMobileNavOpen(prev => !prev)}>
                         <div className='w-8 h-0.5 bg-gray-600'></div>
                         <div className='w-8 h-0.5 bg-gray-600'></div>
@@ -34,7 +34,7 @@ const Header: React.FC<Props> = ({ categories }) => {
                         })}
                     </div>
                 </div>
-                <div className='-order-1 flex-1'>
+                <div className='-order-1 flex-1 md:order-3 md:flex-none'>
                     <CartButton />
                 </div>
             </nav>

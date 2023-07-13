@@ -14,7 +14,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     }, [product]);
 
     return (
-        <div className='bg-white m-4 h-48 w-72 md:w-96 relative flex flex-row items-center rounded'>
+        <div className='bg-white m-4 h-48 w-72 md:w-96 relative flex flex-row items-center rounded-md'>
             <Link href={targetProductLink} legacyBehavior about={product.title}>
                 <div className='h-44 w-2/5 relative cursor-pointer'>
                     <Image alt={product.title} src={product.image} fill objectFit='contain' className="w-4/5 h-4/5 object-cover pl-2" />
