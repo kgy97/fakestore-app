@@ -23,7 +23,7 @@ const Product: React.FC<Props> = ({ product, categories }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout categories={categories} >
-                <button onClick={router.back}>Back to the category</button>
+                <button onClick={() => router.back()} className='text-xl m-5 ml-8 hover:underline font-semibold'>&lt;- Back to the category</button>
                 <main className='h-full'>
                     <ProductForm product={product} />
                 </main>

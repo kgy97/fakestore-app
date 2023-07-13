@@ -8,7 +8,7 @@ type Props = {
     target: string;
 };
 
-const NavigationItem: React.FC<Props> = ({ title, target }) => {
+const HeaderNavigationItem: React.FC<Props> = ({ title, target }) => {
     const { asPath } = useRouter();
 
     const isItemCurrentCategory = React.useMemo(() => {
@@ -26,4 +26,4 @@ const NavigationItem: React.FC<Props> = ({ title, target }) => {
     );
 };
 
-export default NavigationItem;
+export default HeaderNavigationItem;

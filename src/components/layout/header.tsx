@@ -2,7 +2,7 @@ import { getCategoryNameFromURL } from '@/helpers';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import NavigationItem from './navigation-item';
+import HeaderNavigationItem from './header-navigation-item';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCartState } from '@/redux/cart-slice';
 
@@ -35,7 +35,7 @@ const Header: React.FC<Props> = ({ categories }) => {
                     </div>
                     <div className={`flex flex-col lg:flex-row justify-start md:mr-10 text-right lg:text-left ${mobileNavOpen ? '' : 'hidden lg:block'}`}>
                         {navigationLinks.map(navItem => {
-                            return <NavigationItem key={navItem.title} title={navItem.title} target={navItem.link} />;
+                            return <HeaderNavigationItem key={navItem.title} title={navItem.title} target={navItem.link} />;
                         })}
                     </div>
                     <button className='absolute'>Cart ({cartState?.length ?? 0})</button>
