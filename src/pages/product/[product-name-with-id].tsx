@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import * as React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Product } from '@/interfaces';
 import { getCategories, getProduct } from '@/helpers';
 import { Layout, ProductForm } from '@/components';
-import Image from 'next/image';
 
 interface Props {
     product: Product;

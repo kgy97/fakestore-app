@@ -1,5 +1,5 @@
-import { Product } from '@/interfaces';
 import * as React from 'react';
+import { Product } from '@/interfaces';
 import ProductCard from './product-card';
 
 type Props = {

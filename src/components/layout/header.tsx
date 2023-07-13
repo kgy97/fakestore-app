@@ -27,9 +27,9 @@ const Header: React.FC<Props> = ({ categories }) => {
                 </Link>
                 <div className='flex flex-col md:justify-center items-end md:w-3/5 lg:w-5/6 flex-1 md:flex-none w-1/5'>
                     <div className='lg:hidden space-y-2 m-2 mb-3' onClick={() => setMobileNavOpen(prev => !prev)}>
-                        <div className='w-8 h-0.5 bg-gray-600'></div>
-                        <div className='w-8 h-0.5 bg-gray-600'></div>
-                        <div className='w-8 h-0.5 bg-gray-600'></div>
+                        {Array.from(Array(3).keys()).map(e => {
+                            return <div key={e} className='w-8 h-0.5 bg-gray-600'></div>;
+                        })}
                     </div>
                     <div className={`flex flex-col lg:flex-row justify-center md:mr-4 text-right lg:text-left ${mobileNavOpen ? '' : 'hidden lg:flex'}`}>
                         {navigationLinks.map(navItem => {

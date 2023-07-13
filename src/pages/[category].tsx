@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import * as React from 'react';
-import { useRouter } from 'next/router';
 import { Product } from '@/interfaces';
-import { getCategories, getCategoryNameFromURL, getProductsInCategory } from '@/helpers';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Layout, Products } from '@/components';
+import { getCategories, getCategoryNameFromURL, getProductsInCategory } from '@/helpers';
 
 interface Props {
     products: Product[];

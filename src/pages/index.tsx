@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import * as React from 'react';
 import { Product } from '@/interfaces';
-import { getCategories, getProducts } from '@/helpers';
-import Link from 'next/link';
 import { Layout, Products } from '@/components';
+import { getCategories, getProducts } from '@/helpers';
 
 interface Props {
     products: Product[];
