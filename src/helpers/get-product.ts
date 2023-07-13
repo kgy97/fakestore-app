@@ -1,6 +1,7 @@
 import { backendUrl } from '@/consts';
 import { Product } from '@/interfaces';
 
+// Returns the product with the given id
 const getProduct = async (id: number): Promise<Product | null> => {
     const response = await fetch(`${backendUrl}/products/${id}`, {
         method: 'GET',

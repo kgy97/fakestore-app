@@ -8,6 +8,7 @@ type Props = {
     target: string;
 };
 
+// The navigation item of the header, navigates to the current category and displays its name 
 const HeaderNavigationItem: React.FC<Props> = ({ title, target }) => {
     const { asPath } = useRouter();
 

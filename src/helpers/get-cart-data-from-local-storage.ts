@@ -1,5 +1,6 @@
 import { ProductInCart } from '@/interfaces';
 
+// Returns the Redux state from the localStorage
 const getCartDataFromLocalStorage = (): ProductInCart[] => {
     try {
         if (typeof localStorage == undefined) return [];

@@ -1,38 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fakestore shop application
 
-## Getting Started
+### How to run the application in a Development environment
 
-First, run the development server:
+In order to run this application, you should run `npm install` in the project directory. Once it finished, you should run `npm run dev`, this will start the application in developer mode on the 3000 port of localhost. You can view the application at the http://localhost:3000/ address.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### About the application
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application mimics a webshop. In the home page, every product is listed. With the navigation in the header section, you can find a page for every category, where the products of the given category are listed.
+You can navigate to a product's page by clicking on these items. Here, you can add the desired amount of the product in your cart, or remove the product entirely. The state of the cart remains persistent between refresh and new tabs.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### About the code
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+This application was created with Next.js, ReduxToolkit and TypeScript.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The source code is inside the `src` folder.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+##### Requirements
+* Node version: 16.17.1

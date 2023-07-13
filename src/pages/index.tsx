@@ -9,6 +9,7 @@ interface Props {
     categories: string[];
 }
 
+// The Home page of the website, it displays every product in every category.
 const Home: React.FC<Props> = ({ products, categories }) => {
     return (
         <>

@@ -3,14 +3,17 @@ import * as React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Product } from '@/interfaces';
-import { getCategories, getProduct } from '@/helpers';
 import { Layout, ProductForm } from '@/components';
+import { getCategories, getProduct } from '@/helpers';
 
 interface Props {
     product: Product;
     categories: string[];
 };
 
+// The webpage of a single Product. The URL contains both the name of the product and its id, therefore the browser and user are able to get the
+// the product name from the url.
+// If the product is not found, the page redirect to the home page.
 const Product: React.FC<Props> = ({ product, categories }) => {
     const router = useRouter();
 

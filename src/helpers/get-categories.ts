@@ -1,5 +1,6 @@
 import { backendUrl } from '@/consts';
 
+// Return every product category
 const getCategories = async (): Promise<string[]> => {
     const response = await fetch(`${backendUrl}/products/categories`, {
         method: 'GET',

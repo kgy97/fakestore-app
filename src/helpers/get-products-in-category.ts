@@ -1,6 +1,7 @@
 import { backendUrl } from '@/consts';
 import { Product } from '@/interfaces';
 
+// Returns every product in the given category
 const getProductsInCategory = async (category: string): Promise<Product[]> => {
     const response = await fetch(`${backendUrl}/products/category/${encodeURIComponent(category)}`, {
         method: 'GET',

@@ -3,6 +3,7 @@ import { ProductInCart } from '@/interfaces';
 import { HYDRATE } from 'next-redux-wrapper';
 import { createSlice } from '@reduxjs/toolkit';
 
+// Cart state handling with Redux
 export interface CartState {
     cartState: ProductInCart[];
 }
@@ -15,6 +16,8 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
+        // This reducer gets the new cart state pre-calculated, so it only needs to set this value to the cartState.
+        // I found this unified step a better option when handling Redux, Next.js and localStorage.
         setCartState(state, action) {
             state.cartState = action.payload;
         }

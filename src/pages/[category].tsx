@@ -10,6 +10,7 @@ interface Props {
     categories: string[];
 };
 
+// Displays the products in the selected category. If the category name is incorrect, the page redirects to the home page.
 const ProductsInCategory: React.FC<Props> = ({ products, categories }) => {
     const { asPath } = useRouter();
 

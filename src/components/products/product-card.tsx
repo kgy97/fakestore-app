@@ -8,6 +8,8 @@ type Props = {
     product: Product;
 };
 
+// Displays the main properties of a product in the products list. The image and the title of the product
+// are navigation elements for the product's page
 const ProductCard: React.FC<Props> = ({ product }) => {
 
     const targetProductLink = React.useMemo(() => {

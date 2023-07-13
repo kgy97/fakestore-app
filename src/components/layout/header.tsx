@@ -7,6 +7,7 @@ type Props = {
     categories: string[];
 };
 
+// The header of the website, displays the product categories, the name of the store and the cart
 const Header: React.FC<Props> = ({ categories }) => {
     const [mobileNavOpen, setMobileNavOpen] = React.useState<boolean>(false);
 
@@ -26,6 +27,7 @@ const Header: React.FC<Props> = ({ categories }) => {
                     </div>
                 </Link>
                 <div className='flex flex-col md:justify-center items-end md:w-3/5 lg:w-5/6 flex-1 md:flex-none w-1/5'>
+                    {/* Mobile menu hamburger icon */}
                     <div className='lg:hidden space-y-2 m-2 mb-3' onClick={() => setMobileNavOpen(prev => !prev)}>
                         {Array.from(Array(3).keys()).map(e => {
                             return <div key={e} className='w-8 h-0.5 bg-gray-600'></div>;

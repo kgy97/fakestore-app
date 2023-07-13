@@ -6,6 +6,7 @@ type Props = {
     children: JSX.Element | JSX.Element[];
 };
 
+// The component defines the layout of the website, it is used as a wrapper component
 const Layout: React.FC<Props> = ({ categories, children }) => {
 
     return (

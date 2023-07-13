@@ -9,6 +9,9 @@ type Props = {
     product: Product;
 };
 
+// Displays the page of a product. It handles the logic of adding an item to the cart and removing it.
+// The users are able to put multiple products in their cart at once.
+// The remove from cart function removes every instance of the same product from the cart. 
 const ProductForm: React.FC<Props> = ({ product }) => {
     const dispatch = useDispatch();
     const cartState = useSelector(selectCartState);
@@ -32,6 +35,15 @@ const ProductForm: React.FC<Props> = ({ product }) => {
 
         dispatch(setCartState(newCartState));
     }, [product, dispatch, cartState]);
+
+    const handleQuentityChange = React.useCallback((newQuantity: string) => {
+        if (newQuantity == undefined || isNaN(newQuantity as unknown as number) || +newQuantity < 0) {
+            setQuantity(0);
+        }
+        else {
+            setQuantity(+newQuantity);
+        }
+    }, []);
 
     return (
         <div className='h-min md:mt-16'>
@@ -58,7 +70,7 @@ const ProductForm: React.FC<Props> = ({ product }) => {
                                 type='number'
                                 className='h-10 text-lg w-16 border-2 rounded-lg px-2'
                                 value={quantity}
-                                onChange={(e) => setQuantity(+e?.target?.value ?? 1)} />
+                                onChange={(e) => handleQuentityChange(e?.target?.value)} />
                         </div>
                         <div className='flex flex-row items-center md:pl-5'>
                             <button onClick={addItemToCart} className='m-2 ml-4 bg-neutral-200 rounded-md px-4 py-2 hover:bg-neutral-300 active:bg-neutral-400'>

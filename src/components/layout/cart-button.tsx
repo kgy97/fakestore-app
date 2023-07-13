@@ -5,6 +5,7 @@ import { selectCartState } from '@/redux/cart-slice';
 
 type Props = {};
 
+//Displays the cart component and the number of items in the cart
 const CartButton: React.FC<Props> = ({ }) => {
     const cartState = useSelector(selectCartState);
 

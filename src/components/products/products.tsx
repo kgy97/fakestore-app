@@ -6,6 +6,7 @@ type Props = {
     products: Product[];
 };
 
+// Displays the products in a list
 const Products: React.FC<Props> = ({ products }) => {
 
     return (

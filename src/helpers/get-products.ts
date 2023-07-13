@@ -1,6 +1,7 @@
 import { backendUrl } from '@/consts';
 import { Product } from '@/interfaces';
 
+//Returns every product
 const getProducts = async (): Promise<Product[]> => {
     const response = await fetch(`${backendUrl}/products`, {
         method: 'GET',
