@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import * as React from 'react';
+import { currency } from '@/consts';
 import { Product } from '@/interfaces';
 
 type Props = {
@@ -24,7 +25,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
                 <Link href={targetProductLink} legacyBehavior about={product.title}>
                     <span className='font-semibold cursor-pointer hover:underline'>{product.title}</span>
                 </Link>
-                <span className='font-semibold text-end'>{product.price} $</span>
+                <span className='font-semibold text-end'>{product.price} {currency}</span>
             </div>
         </div>
     );

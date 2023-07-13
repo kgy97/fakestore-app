@@ -2,7 +2,7 @@ import { ProductInCart } from '@/interfaces';
 
 const setCartDataInLocalStorage = (cartData: ProductInCart[]): void => {
     try {
-        if (typeof window == undefined) return;
+        if (typeof localStorage == undefined) return;
 
         localStorage.setItem('cartData', JSON.stringify(cartData));
     }

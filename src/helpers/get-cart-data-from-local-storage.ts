@@ -2,6 +2,8 @@ import { ProductInCart } from '@/interfaces';
 
 const getCartDataFromLocalStorage = (): ProductInCart[] => {
     try {
+        if (typeof localStorage == undefined) return [];
+
         const rawCartData = localStorage.getItem('cartData');
 
         if (!!rawCartData) return JSON.parse(rawCartData);

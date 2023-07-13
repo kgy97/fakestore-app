@@ -11,7 +11,7 @@ const Layout: React.FC<Props> = ({ categories, children }) => {
     return (
         <div className='min-h-full flex flex-col'>
             <Header categories={categories} />
-            <div className='bg-cyan-50 grow'>
+            <div className='bg-neutral-50 grow'>
                 {children}
             </div>
         </div>
